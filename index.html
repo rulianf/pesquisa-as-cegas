@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Pesquisa Cega — Descubra quem pensa como você pensa</title>
+    <link rel="icon" href="assets/svg/favicon.png" type="image/png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/screens.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+  </head>
+  <body onload="init()">
+    <!-- ═════════════════════════════════════════ -->
+    <!-- LANDING SCREEN                           -->
+    <!-- ═════════════════════════════════════════ -->
+    <section class="screen active" id="screen-landing">
+      <div class="landing-inner">
+        <div class="logo-mark">
+          <img src="assets/svg/logo.png" alt="Logo Pesquisa Cega" />
+        </div>
+
+        <div class="landing-tag">Pesquisa Cega · 2026</div>
+
+        <h1 class="landing-title">Descubra quem pensa como você pensa</h1>
+
+        <p class="landing-desc">
+          Responda 7 perguntas rápidas sobre propostas, sem ver nomes ou partidos. Ao final,
+          descubra quais pré-candidatos pensam mais parecido com você.
+        </p>
+
+        <div class="landing-chips">
+          <span class="chip">7 perguntas</span>
+          <span class="chip">~3 minutos</span>
+          <span class="chip">Sem cadastro</span>
+          <span class="chip">Presidência + Governador ES</span>
+        </div>
+
+        <button class="btn-start" onclick="startQuiz()">
+          Começar agora
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <p class="landing-note">
+          Não coletamos dados pessoais. O resultado é de similaridade de ideias, não recomendação
+          de voto.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════ -->
+    <!-- QUIZ SCREEN                              -->
+    <!-- ═════════════════════════════════════════ -->
+    <section class="screen" id="screen-quiz">
+      <div class="quiz-header">
+        <div style="display: flex; align-items: center; gap: var(--spacing-md); flex: 1;">
+          <div class="quiz-logo-small">
+            <img src="assets/svg/logo.png" alt="Logo Pesquisa Cega" />
+          </div>
+          <span class="quiz-header-title">Pesquisa Cega</span>
+        </div>
+        <span class="quiz-progress-text" id="progress-text">1/7</span>
+        <button class="quiz-cancel-btn" onclick="cancelQuiz()" title="Cancelar e voltar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="progress-fill" style="width: 14%"></div>
+      </div>
+
+      <div class="quiz-body" id="quiz-body">
+        <div class="quiz-theme-tag"><span id="theme-name">Tema</span></div>
+        <h2 class="quiz-question-text" id="question-text">Pergunta</h2>
+        <div class="quiz-multi-hint" id="multi-hint">
+          Escolha exatamente <strong id="max-choices-text">2</strong> opções.
+        </div>
+        <div class="options-list" id="options-list"></div>
+      </div>
+
+      <div class="quiz-footer">
+        <button class="btn-back" id="btn-back" onclick="prevQuestion()">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Voltar
+        </button>
+        <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+          <span id="btn-next-text">Próxima</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════ -->
+    <!-- MODAL - CANDIDATE PROFILE                -->
+    <!-- ═════════════════════════════════════════ -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+      <div class="modal-box" id="modal-box">
+        <div class="modal-header">
+          <div class="modal-avatar" id="modal-avatar"></div>
+          <div>
+            <div class="modal-name" id="modal-name"></div>
+            <div class="modal-party" id="modal-party"></div>
+          </div>
+        </div>
+        <p class="modal-bio" id="modal-bio"></p>
+        <div class="modal-disclaimer">
+          A similaridade reflete as respostas do questionário; não é endosso ou recomendação de
+          voto.
+        </div>
+        <button class="modal-close" onclick="document.getElementById('modal-overlay').classList.remove('open')">
+          Fechar
+        </button>
+      </div>
+    </div>
+
+    <!-- ═════════════════════════════════════════ -->
+    <!-- JAVASCRIPT FILES                         -->
+    <!-- ═════════════════════════════════════════ -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/scoring.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

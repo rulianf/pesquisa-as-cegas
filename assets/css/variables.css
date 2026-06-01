@@ -1,0 +1,55 @@
+/* ═══════════════════════════════════════════ */
+/* CSS VARIABLES & DESIGN TOKENS              */
+/* ═══════════════════════════════════════════ */
+
+:root {
+  /* ───── COLORS ───── */
+  --navy: #0b1e3d;
+  --blue: #1a4fa0;
+  --teal: #0e8a6e;
+  --bg: #f2f4f7;
+  --white: #ffffff;
+  --gray-100: #f0f2f5;
+  --gray-200: #e2e6ed;
+  --gray-400: #9aa3b0;
+  --gray-600: #5a6478;
+  --gray-900: #1a2133;
+  --green: #0e8a6e;
+  --green-light: #d4f5ec;
+  --red: #c0392b;
+  --red-light: #fde8e6;
+  --teal-accent: #5ce8c5;
+
+  /* ───── SPACING ───── */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+
+  /* ───── BORDER RADIUS ───── */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-full: 100px;
+
+  /* ───── SHADOWS ───── */
+  --shadow: 0 2px 16px rgba(11, 30, 61, 0.1);
+  --shadow-lg: 0 8px 40px rgba(11, 30, 61, 0.15);
+
+  /* ───── TYPOGRAPHY ───── */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* ───── TRANSITIONS ───── */
+  --transition-fast: 0.15s;
+  --transition-normal: 0.25s;
+}
