@@ -306,7 +306,7 @@ const DATASET = {
       office: 'governador',
       color: '#1a4fa0',
       avatar: './assets/img/candidates/malta.jpg',
-      instagram: 'https://www.instagram.com/magnomaltaoficial/',
+      instagram: 'https://www.instagram.com/magnomalta/',
       shortBio: `Veterano da política capixaba e nacional, conhecido por sua carreira como cantor gospel e pastor evangélico antes de ingressar na vida pública. Com vários mandatos como senador e deputado, ele se tornou uma das vozes mais proeminentes da bancada evangélica no Congresso. Sua imagem é indissociável da defesa dos valores da família tradicional, do combate às drogas e do endurecimento das penas criminais, tendo presidido CPIs famosas sobre maus-tratos infantis.
       Retratado na imprensa como um orador inflamado e carismático, Malta é um aliado de primeira hora da família Bolsonaro e um dos principais mobilizadores do eleitorado cristão conservador. Embora tenha enfrentado períodos de ostracismo político, seu retorno ao Senado em 2022 reafirmou sua força como um símbolo do conservadorismo religioso e da pauta de costumes no Brasil.`
     },
@@ -354,7 +354,7 @@ const DATASET = {
       office: 'governador',
       color: '#1a1a1a',
       avatar: './assets/img/candidates/breno.jpg',
-      instagram: 'https://www.instagram.com/brenobarcelos_/',
+      instagram: 'https://www.instagram.com/brenobarcelos14/',
       shortBio: `liderança emergente ligada ao Movimento Brasil Livre (MBL) no Espírito Santo. Com um perfil acadêmico e técnico, ele se destaca pela articulação interna e pela formação de novos quadros para o Partido Missão no estado. Diferente de outras figuras do movimento que buscam o confronto direto, Breno é visto como um nome de bastidor e planejamento, focado em construir as bases para a expansão da legenda em território capixaba.
       Na imprensa e nas redes sociais, ele é apresentado como a face capixaba da renovação proposta pelo MBL, defendendo a eficiência na gestão pública e o combate aos privilégios. Como pré-candidato ao governo do estado, sua imagem está sendo construída como uma alternativa jovem e técnica, alinhada aos princípios de Renan Santos e da cúpula nacional do Missão.`
   }
