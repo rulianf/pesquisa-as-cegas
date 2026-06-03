@@ -130,10 +130,6 @@ const DATASET = {
         {
           id: 'C',
           text: 'Aumentar o número de médicos, incluindo programas para trazer profissionais de outros países.'
-        },
-        {
-          id: 'D',
-          text: 'Aumentar os investimentos(custos) em saúde para ampliar o atendimento e melhorar a qualidade dos serviços.'
         }
       ]
     },
@@ -249,8 +245,10 @@ const DATASET = {
       office: 'presidencia',
       color: '#CC0000',
       avatar: './assets/img/candidates/lula.jpg',
+      instagram: 'https://www.instagram.com/lulaoficial/',
       shortBio:
-        'Renan Santos é um dos fundadores e o principal estrategista do Movimento Brasil Livre (MBL), grupo que ganhou projeção nacional durante os protestos pelo impeachment de Dilma Rousseff em 2015 e 2016. Conhecido por seu estilo combativo e pelo uso intensivo das redes sociais, ele é visto na imprensa como uma figura central na renovação da direita brasileira, embora frequentemente se envolva em polêmicas e embates com o chamado "bolsonarismo".\n Empresário e ativista, Renan nunca ocupou cargos eletivos, mas atuou nos bastidores de diversas campanhas vitoriosas do MBL. Atualmente, ele preside o Partido Missão, a nova legenda criada pelo movimento para consolidar sua independência política. No cenário público, é descrito como um articulador habilidoso que busca construir uma "terceira via" de direita, focada na formação de novas lideranças e na eficiência administrativa.'
+        `Figura mais icônica e polarizadora da política brasileira contemporânea. De origem humilde e ex-líder sindical, ele fundou o Partido dos Trabalhadores (PT) e se tornou o primeiro operário a chegar à Presidência da República, cargo que ocupou por dois mandatos (2003-2010) e ao qual retornou em 2023. Sua trajetória é marcada por grandes conquistas sociais, mas também por crises políticas profundas e processos judiciais que o levaram à prisão e, posteriormente, à anulação de suas condenações.
+        Na imprensa internacional e nacional, Lula é frequentemente retratado como um negociador nato e um carismático líder de massas, capaz de transitar entre diferentes grupos políticos e econômicos. Enquanto seus apoiadores o veem como o "pai dos pobres" e o defensor da democracia, seus críticos o associam aos escândalos de corrupção que marcaram as gestões petistas. Sua figura transcende a política partidária, sendo um símbolo global do multilateralismo e das lutas sociais.`
     },
     {
       id: 'flavio',
@@ -260,8 +258,9 @@ const DATASET = {
       office: 'presidencia',
       color: '#1a4fa0',
       avatar: './assets/img/candidates/flavio.jpg',
-      shortBio:
-        'Senador pelo PL e pré-candidato à Presidência. Defende privatizações amplas, segurança linha dura, redução da maioridade penal e alinhamento com os EUA.'
+      instagram: 'https://www.instagram.com/flaviobolsonaro/',
+      shortBio:`Filho mais velho do ex-presidente Jair Bolsonaro e atua como um dos principais articuladores políticos do grupo familiar. Com mandatos como deputado estadual no Rio de Janeiro e, atualmente, como senador da República, ele é visto como o "braço político" do bolsonarismo, responsável por negociar alianças e manter a interlocução com o Congresso. Sua trajetória é marcada pela defesa das pautas de segurança, valores conservadores e liberdade econômica.
+      Na imprensa, Flávio é frequentemente citado em investigações judiciais, como o caso das "rachadinhas", o que molda parte da percepção pública sobre sua figura. No entanto, entre os apoiadores de seu pai, ele é visto como um herdeiro político resiliente e um estrategista que ajuda a manter a coesão da direita conservadora no Brasil. Ele é um dos principais nomes do PL para as articulações eleitorais de 2026.`
     },
     {
       id: 'zema',
@@ -271,8 +270,9 @@ const DATASET = {
       office: 'presidencia',
       color: '#e85c00',
       avatar: './assets/img/candidates/zema.jpg',
-      shortBio:
-        'Ex-governador de Minas Gerais pelo Partido Novo. Defende privatização de todas as estatais, reforma administrativa profunda e liberalismo econômico radical.'
+      instagram: 'https://www.instagram.com/romeuzemaoficial/',
+      shortBio: `Empresário de sucesso no setor varejista mineiro antes de surpreender o cenário político em 2018, quando foi eleito governador de Minas Gerais pelo Partido Novo. Sem experiência prévia na vida pública, ele adotou um estilo de gestão empresarial, focando no corte de gastos, na renegociação da dívida do estado e na atração de investimentos. Sua imagem é a do "gestor-cidadão", que utiliza voos comerciais e mantém hábitos simples, contrastando com a pompa tradicional dos cargos políticos.
+      Reeleito em primeiro turno em 2022, Zema consolidou-se como uma liderança liberal de resultados. A imprensa frequentemente destaca seu pragmatismo e sua fala mansa, mas direta, que ressoa com um eleitorado cansado da política tradicional. Embora tenha mantido uma relação de apoio crítico ao governo Bolsonaro, ele buscou preservar sua identidade própria, focada na eficiência administrativa e no liberalismo econômico puro.`
     },
     {
       id: 'caiado',
@@ -282,8 +282,9 @@ const DATASET = {
       office: 'presidencia',
       color: '#2e7d32',
       avatar: './assets/img/candidates/caiado.jpg',
-      shortBio:
-        'Governador de Goiás pelo PSD. Propõe "nacionalizar" projetos testados em Goiás: segurança integrada, policlínicas e responsabilidade fiscal.'
+      instagram: 'https://www.instagram.com/ronaldocaiado/',
+      shortBio:`Uma das figuras mais tradicionais e longevas da política brasileira, com uma trajetória que remonta à fundação da União Democrática Ruralista (UDR) nos anos 80, onde se destacou como defensor dos produtores rurais. Médico de formação e herdeiro de uma influente família política de Goiás, ele construiu uma carreira sólida no Congresso Nacional, servindo como deputado federal e senador por vários mandatos, sempre posicionado como uma voz conservadora e defensora da propriedade privada.
+        Atualmente em seu segundo mandato como governador de Goiás, Caiado é frequentemente citado na imprensa como um gestor rigoroso e "pulso firme", especialmente na área de segurança pública, que se tornou sua principal marca. Sua imagem pública é a de um político experiente, de temperamento forte e retórica direta, que conseguiu unir o apoio do agronegócio a uma gestão estadual bem avaliada, posicionando-se como um forte nome para a disputa presidencial.`
     },
     {
       id: 'renan',
@@ -293,9 +294,9 @@ const DATASET = {
       office: 'presidencia',
       color: '#1a1a1a',
       avatar: './assets/img/candidates/renan.jpg',
-      shortBio:
-           'Renan Santos é um dos fundadores e o principal estrategista do Movimento Brasil Livre (MBL), grupo que ganhou projeção nacional durante os protestos pelo impeachment de Dilma Rousseff em 2015 e 2016. Conhecido por seu estilo combativo e pelo uso intensivo das redes sociais, ele é visto na imprensa como uma figura central na renovação da direita brasileira, embora frequentemente se envolva em polêmicas e embates com o chamado "bolsonarismo".   Empresário e ativista, Renan nunca ocupou cargos eletivos, mas atuou nos bastidores de diversas campanhas vitoriosas do MBL. Atualmente, ele preside o Partido Missão, a nova legenda criada pelo movimento para consolidar sua independência política. No cenário público, é descrito como um articulador habilidoso que busca construir uma "terceira via" de direita, focada na formação de novas lideranças e na eficiência administrativa.'
-    
+      instagram: 'https://www.instagram.com/renansantosmbl/',
+      shortBio: `Fundadores e o principal estrategista do Movimento Brasil Livre (MBL), grupo que ganhou projeção nacional durante os protestos pelo impeachment de Dilma Rousseff em 2015 e 2016. Conhecido por seu estilo combativo e pelo uso intensivo das redes sociais, ele é visto na imprensa como uma figura central na renovação da direita brasileira, embora frequentemente se envolva em polêmicas e embates com o chamado "bolsonarismo".
+      Empresário e ativista, Renan nunca ocupou cargos eletivos, mas atuou nos bastidores de diversas campanhas vitoriosas do MBL. Atualmente, ele preside o Partido Missão, a nova legenda criada pelo movimento para consolidar sua independência política. No cenário público, é descrito como um articulador habilidoso que busca construir uma "terceira via" de direita, focada na formação de novas lideranças e na eficiência administrativa.`
     },
     {
       id: 'malta',
@@ -305,8 +306,9 @@ const DATASET = {
       office: 'governador',
       color: '#1a4fa0',
       avatar: './assets/img/candidates/malta.jpg',
-      shortBio:
-        'Ex-senador pelo PL, pré-candidato ao Governo do ES. Agenda conservadora com ênfase em segurança, valores tradicionais e apoio ao agronegócio capixaba.'
+      instagram: 'https://www.instagram.com/magnomaltaoficial/',
+      shortBio: `Veterano da política capixaba e nacional, conhecido por sua carreira como cantor gospel e pastor evangélico antes de ingressar na vida pública. Com vários mandatos como senador e deputado, ele se tornou uma das vozes mais proeminentes da bancada evangélica no Congresso. Sua imagem é indissociável da defesa dos valores da família tradicional, do combate às drogas e do endurecimento das penas criminais, tendo presidido CPIs famosas sobre maus-tratos infantis.
+      Retratado na imprensa como um orador inflamado e carismático, Malta é um aliado de primeira hora da família Bolsonaro e um dos principais mobilizadores do eleitorado cristão conservador. Embora tenha enfrentado períodos de ostracismo político, seu retorno ao Senado em 2022 reafirmou sua força como um símbolo do conservadorismo religioso e da pauta de costumes no Brasil.`
     },
     {
       id: 'helder',
@@ -316,8 +318,9 @@ const DATASET = {
       office: 'governador',
       color: '#CC0000',
       avatar: './assets/img/candidates/helder.jpg',
-      shortBio:
-        'Ex-prefeito de Cariacica pelo PT, pré-candidato ao Governo do ES. Combina equilíbrio fiscal com ampliação de políticas sociais e educação de qualidade.'
+      instagram: 'https://www.instagram.com/heldersalomao/',
+      shortBio: `Professor de filosofia e político de carreira no Espírito Santo, com uma trajetória profundamente ligada às comunidades eclesiais de base e ao movimento sindical. Ele ganhou destaque como prefeito de Cariacica, onde implementou gestões focadas na participação popular e no desenvolvimento social. Como deputado federal, ele é visto como um dos principais quadros do PT no estado, mantendo uma postura de diálogo e defesa ferrenha das políticas públicas de educação e direitos humanos.
+      Na imprensa local, Helder é descrito como um político de perfil ético e moderado, respeitado inclusive por adversários por sua coerência ideológica. Ele representa a ala mais orgânica e militante do PT, focada na base social e na defesa do legado das gestões lulistas, sendo uma figura central para a articulação da esquerda no Espírito Santo.`
     },
     {
       id: 'pazolini',
@@ -327,8 +330,9 @@ const DATASET = {
       office: 'governador',
       color: '#0d47a1',
       avatar: './assets/img/candidates/pazolini.jpg',
-      shortBio:
-        'Ex-prefeito de Vitória e delegado de carreira. Foco em segurança com tecnologia (cerco inteligente), equilíbrio fiscal modelo Hartung e gestão por resultados.'
+      instagram: 'https://www.instagram.com/lorenzopazolini/',
+      shortBio: `Carreira técnica e policial, tendo atuado como auditor do Tribunal de Contas e, posteriormente, como delegado da Polícia Civil no Espírito Santo. Ele ganhou notoriedade estadual por seu trabalho na Delegacia de Proteção à Criança e ao Adolescente, o que o catapultou para uma votação expressiva como deputado estadual em 2018. Sua imagem pública é fortemente associada à legalidade e ao combate ao crime.
+      Eleito prefeito de Vitória em 2020 e reeleito em 2024, Pazolini é visto como um gestor moderno que busca equilibrar o rigor da segurança pública com a eficiência tecnológica na saúde e na educação. Na imprensa local, é frequentemente descrito como um político que mantém uma postura institucional séria, evitando o populismo exacerbado, mas mantendo uma base fiel de apoio através de entregas concretas na capital capixaba.`
     },
     {
       id: 'ferraco',
@@ -338,8 +342,9 @@ const DATASET = {
       office: 'governador',
       color: '#2e7d32',
       avatar: './assets/img/candidates/ferraco.jpg',
-      shortBio:
-        'Atual governador do ES pelo MDB. Foco em segurança, saúde e educação com ênfase em infraestrutura, logística e gestão dos royalties de petróleo.'
+      instagram: 'https://www.instagram.com/ricardoferraco/',
+      shortBio: `Ricardo Ferraço possui uma das trajetórias mais completas da política capixaba, tendo ocupado cargos em todas as esferas: foi deputado estadual, federal, senador e vice-governador por duas vezes. Filho de um tradicional líder político do sul do estado, ele construiu uma imagem de político técnico e preparador, com forte trânsito no setor produtivo e nas instâncias de decisão em Brasília. Atualmente, exerce o cargo de governador do Espírito Santo após a desincompatibilização de Renato Casagrande.
+      Visto na imprensa como um articulador pragmático e um entusiasta da modernização administrativa, Ferraço é o tipo de político que prioriza a estabilidade institucional e o crescimento econômico. Sua figura é associada à continuidade de políticas públicas bem-sucedidas no estado, sendo considerado um gestor experiente que sabe equilibrar as demandas políticas com o rigor fiscal.`
     },
     {
       id: 'breno',
@@ -349,9 +354,10 @@ const DATASET = {
       office: 'governador',
       color: '#1a1a1a',
       avatar: './assets/img/candidates/breno.jpg',
-      shortBio:
-        'Pré-candidato ao Governo do ES pelo Partido Missão (MBL). Perfil liberal com liberalismo econômico amplo e segurança pública rigorosa.'
-    }
+      instagram: 'https://www.instagram.com/brenobarcelos_/',
+      shortBio: `liderança emergente ligada ao Movimento Brasil Livre (MBL) no Espírito Santo. Com um perfil acadêmico e técnico, ele se destaca pela articulação interna e pela formação de novos quadros para o Partido Missão no estado. Diferente de outras figuras do movimento que buscam o confronto direto, Breno é visto como um nome de bastidor e planejamento, focado em construir as bases para a expansão da legenda em território capixaba.
+      Na imprensa e nas redes sociais, ele é apresentado como a face capixaba da renovação proposta pelo MBL, defendendo a eficiência na gestão pública e o combate aos privilégios. Como pré-candidato ao governo do estado, sua imagem está sendo construída como uma alternativa jovem e técnica, alinhada aos princípios de Renan Santos e da cúpula nacional do Missão.`
+  }
   ],
 
   profiles: {
@@ -361,7 +367,7 @@ const DATASET = {
     zema:       { Q1: 'C', Q2: ['B', 'E'], Q3: 'B', Q4: 'A', Q5: 'A', Q6: 'A', Q7: ['D', 'H', 'C'] },
     caiado:     { Q1: 'A', Q2: ['A', 'B'], Q3: 'A', Q4: 'B', Q5: 'A', Q6: 'A', Q7: ['D', 'C', 'H'] },
     renan:      { Q1: 'A', Q2: ['A', 'E'], Q3: 'A', Q4: 'B', Q5: 'C', Q6: 'A', Q7: ['C', 'D', 'E'] },
-    breno:      { Q1: 'A', Q2: ['A', 'E'], Q3: 'A', Q4: 'B', Q5: 'C', Q6: 'A', Q7: ['D', 'D', 'E'] },
+    breno:      { Q1: 'A', Q2: ['A', 'E'], Q3: 'A', Q4: 'B', Q5: 'C', Q6: 'A', Q7: ['C', 'D', 'E'] },
     malta:      { Q1: 'C', Q2: ['A', 'D'], Q3: 'B', Q4: 'A', Q5: 'A', Q6: 'C', Q7: ['D', 'B', 'H'] },
     pazolini:   { Q1: 'A', Q2: ['A', 'B'], Q3: 'D', Q4: 'B', Q5: 'A', Q6: 'A', Q7: ['D', 'F', 'G']},
     ferraco:    { Q1: 'B', Q2: ['C', 'B'], Q3: 'D', Q4: 'C', Q5: 'B', Q6: 'A', Q7: ['D', 'F', 'G'] }
