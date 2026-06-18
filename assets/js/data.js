@@ -130,10 +130,6 @@ const DATASET = {
         {
           id: 'C',
           text: 'Aumentar o número de médicos, incluindo programas para trazer profissionais de outros países.'
-        },
-        {
-          id: 'D',
-          text: 'Aumentar os investimentos(custos) em saúde para ampliar o atendimento e melhorar a qualidade dos serviços.'
         }
       ]
     },
@@ -251,7 +247,7 @@ const DATASET = {
       avatar: './assets/img/candidates/lula.jpg',
       instagram: 'https://www.instagram.com/lulaoficial/',
       shortBio:
-        'Presidente em exercício pelo PT. Defende fortalecimento do SUS, programas sociais, multilateralismo e combate à fome e desigualdade.'
+        'Renan Santos é um dos fundadores e o principal estrategista do Movimento Brasil Livre (MBL), grupo que ganhou projeção nacional durante os protestos pelo impeachment de Dilma Rousseff em 2015 e 2016. Conhecido por seu estilo combativo e pelo uso intensivo das redes sociais, ele é visto na imprensa como uma figura central na renovação da direita brasileira, embora frequentemente se envolva em polêmicas e embates com o chamado "bolsonarismo".\n Empresário e ativista, Renan nunca ocupou cargos eletivos, mas atuou nos bastidores de diversas campanhas vitoriosas do MBL. Atualmente, ele preside o Partido Missão, a nova legenda criada pelo movimento para consolidar sua independência política. No cenário público, é descrito como um articulador habilidoso que busca construir uma "terceira via" de direita, focada na formação de novas lideranças e na eficiência administrativa.'
     },
     {
       id: 'flavio',
@@ -261,7 +257,6 @@ const DATASET = {
       office: 'presidencia',
       color: '#1a4fa0',
       avatar: './assets/img/candidates/flavio.jpg',
-      instagram: 'https://www.instagram.com/flaviobolsonaro/',
       shortBio:
         'Senador pelo PL e pré-candidato à Presidência. Defende privatizações amplas, segurança linha dura, redução da maioridade penal e alinhamento com os EUA.'
     },
@@ -273,10 +268,8 @@ const DATASET = {
       office: 'presidencia',
       color: '#e85c00',
       avatar: './assets/img/candidates/zema.jpg',
-      instagram: 'https://www.instagram.com/romeu.zema/',
-      shortBio: `Empresário de sucesso no setor varejista mineiro antes de surpreender o cenário político em 2018, quando foi eleito governador de Minas Gerais pelo Partido Novo. Sem experiência prévia na vida pública, ele adotou um estilo de gestão empresarial, focando no corte de gastos, na renegociação da dívida do estado e na atração de investimentos. Sua imagem é a do "gestor-cidadão", que utiliza voos comerciais e mantém hábitos simples, contrastando com a pompa tradicional dos cargos políticos.
-
-                Reeleito em primeiro turno em 2022, Zema consolidou-se como uma liderança liberal de resultados. A imprensa frequentemente destaca seu pragmatismo e sua fala mansa, mas direta, que ressoa com um eleitorado cansado da política tradicional. Embora tenha mantido uma relação de apoio crítico ao governo Bolsonaro, ele buscou preservar sua identidade própria, focada na eficiência administrativa e no liberalismo econômico puro.`
+      shortBio:
+        'Ex-governador de Minas Gerais pelo Partido Novo. Defende privatização de todas as estatais, reforma administrativa profunda e liberalismo econômico radical.'
     },
     {
       id: 'caiado',
@@ -286,7 +279,6 @@ const DATASET = {
       office: 'presidencia',
       color: '#2e7d32',
       avatar: './assets/img/candidates/caiado.jpg',
-      instagram: 'https://www.instagram.com/ronaldocaiado/',
       shortBio:
         'Governador de Goiás pelo PSD. Propõe "nacionalizar" projetos testados em Goiás: segurança integrada, policlínicas e responsabilidade fiscal.'
     },
@@ -298,10 +290,9 @@ const DATASET = {
       office: 'presidencia',
       color: '#1a1a1a',
       avatar: './assets/img/candidates/renan.jpg',
-      instagram: 'https://www.instagram.com/renan_mbl/',
       shortBio:
            'Renan Santos é um dos fundadores e o principal estrategista do Movimento Brasil Livre (MBL), grupo que ganhou projeção nacional durante os protestos pelo impeachment de Dilma Rousseff em 2015 e 2016. Conhecido por seu estilo combativo e pelo uso intensivo das redes sociais, ele é visto na imprensa como uma figura central na renovação da direita brasileira, embora frequentemente se envolva em polêmicas e embates com o chamado "bolsonarismo".   Empresário e ativista, Renan nunca ocupou cargos eletivos, mas atuou nos bastidores de diversas campanhas vitoriosas do MBL. Atualmente, ele preside o Partido Missão, a nova legenda criada pelo movimento para consolidar sua independência política. No cenário público, é descrito como um articulador habilidoso que busca construir uma "terceira via" de direita, focada na formação de novas lideranças e na eficiência administrativa.'
-
+    
     },
     {
       id: 'malta',
@@ -311,7 +302,6 @@ const DATASET = {
       office: 'governador',
       color: '#1a4fa0',
       avatar: './assets/img/candidates/malta.jpg',
-      instagram: 'https://www.instagram.com/magnomaltaoficial/',
       shortBio:
         'Ex-senador pelo PL, pré-candidato ao Governo do ES. Agenda conservadora com ênfase em segurança, valores tradicionais e apoio ao agronegócio capixaba.'
     },
@@ -323,7 +313,6 @@ const DATASET = {
       office: 'governador',
       color: '#CC0000',
       avatar: './assets/img/candidates/helder.jpg',
-      instagram: 'https://www.instagram.com/heldersalomao/',
       shortBio:
         'Ex-prefeito de Cariacica pelo PT, pré-candidato ao Governo do ES. Combina equilíbrio fiscal com ampliação de políticas sociais e educação de qualidade.'
     },
@@ -335,7 +324,6 @@ const DATASET = {
       office: 'governador',
       color: '#0d47a1',
       avatar: './assets/img/candidates/pazolini.jpg',
-      instagram: 'https://www.instagram.com/lorenzopazolini/',
       shortBio:
         'Ex-prefeito de Vitória e delegado de carreira. Foco em segurança com tecnologia (cerco inteligente), equilíbrio fiscal modelo Hartung e gestão por resultados.'
     },
@@ -347,7 +335,6 @@ const DATASET = {
       office: 'governador',
       color: '#2e7d32',
       avatar: './assets/img/candidates/ferraco.jpg',
-      instagram: 'https://www.instagram.com/ricardoferraco/',
       shortBio:
         'Atual governador do ES pelo MDB. Foco em segurança, saúde e educação com ênfase em infraestrutura, logística e gestão dos royalties de petróleo.'
     },
@@ -359,9 +346,8 @@ const DATASET = {
       office: 'governador',
       color: '#1a1a1a',
       avatar: './assets/img/candidates/breno.jpg',
-      instagram: 'https://www.instagram.com/brenobarcelos_/',
       shortBio:
-        'Renan Santos é um dos fundadores e o principal estrategista do Movimento Brasil Livre (MBL), grupo que ganhou projeção nacional durante os protestos pelo impeachment de Dilma Rousseff em 2015 e 2016. Conhecido por seu estilo combativo e pelo uso intensivo das redes sociais, ele é visto na imprensa como uma figura central na renovação da direita brasileira, embora frequentemente se envolva em polêmicas e embates com o chamado "bolsonarismo". Empresário e ativista, Renan nunca ocupou cargos eletivos, mas atuou nos bastidores de diversas campanhas vitoriosas do MBL. Atualmente, ele preside o Partido Missão, a nova legenda criada pelo movimento para consolidar sua independência política. No cenário público, é descrito como um articulador habilidoso que busca construir uma "terceira via" de direita, focada na formação de novas lideranças e na eficiência administrativa.'
+        'Pré-candidato ao Governo do ES pelo Partido Missão (MBL). Perfil liberal com liberalismo econômico amplo e segurança pública rigorosa.'
     }
   ],
 

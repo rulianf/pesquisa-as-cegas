@@ -266,9 +266,11 @@ const DATASET = {
       party: 'Novo',
       office: 'presidencia',
       color: '#e85c00',
-      avatar: './assets/img/zema.jpg',
-      shortBio:
-        'Ex-governador de Minas Gerais pelo Partido Novo. Defende privatização de todas as estatais, reforma administrativa profunda e liberalismo econômico radical.'
+      avatar: './assets/img/candidates/zema.jpg',
+      instagram: 'https://www.instagram.com/romeu.zema/',
+      shortBio: `Empresário de sucesso no setor varejista mineiro antes de surpreender o cenário político em 2018, quando foi eleito governador de Minas Gerais pelo Partido Novo. Sem experiência prévia na vida pública, ele adotou um estilo de gestão empresarial, focando no corte de gastos, na renegociação da dívida do estado e na atração de investimentos. Sua imagem é a do "gestor-cidadão", que utiliza voos comerciais e mantém hábitos simples, contrastando com a pompa tradicional dos cargos políticos.
+
+    Reeleito em primeiro turno em 2022, Zema consolidou-se como uma liderança liberal de resultados. A imprensa frequentemente destaca seu pragmatismo e sua fala mansa, mas direta, que ressoa com um eleitorado cansado da política tradicional. Embora tenha mantido uma relação de apoio crítico ao governo Bolsonaro, ele buscou preservar sua identidade própria, focada na eficiência administrativa e no liberalismo econômico puro.`
     },
     {
       id: 'caiado',

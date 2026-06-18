@@ -675,7 +675,7 @@
   font-size: 14px;
   line-height: 1.7;
   color: var(--gray-600);
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-lg);
 }
 
 .modal-disclaimer {
