@@ -35,7 +35,12 @@ function initResultPage() {
  */
 function renderResultsComLayout(userAnswers) {
   const pres = getRankings('presidencia', userAnswers);
-  const gov = getRankings('governador', userAnswers);
+  const gov  = getRankings('governador', userAnswers);
+
+  // Guarda os top 1 para o botão de compartilhamento
+  window._topPres = pres[0];
+  window._topGov  = gov[0];
+
   const container = document.getElementById('result-container');
 
   container.innerHTML = `
@@ -75,4 +80,4 @@ function voltarAoQuiz() {
 }
 
 // Inicializa quando a página carrega
-document.addEventListener('DOMContentLoaded', initResultPage);
+document.addEventListener('DOMContentLoaded', initResultPage);  

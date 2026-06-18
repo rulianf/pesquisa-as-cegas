@@ -1,0 +1,47 @@
+/* ═══════════════════════════════════════════ */
+/* SHARE — Botão compartilhar no Instagram    */
+/* ═══════════════════════════════════════════ */
+
+/* ── Botão principal ── */
+.btn-share-instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 0;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 6px 28px rgba(253, 29, 29, 0.3);
+}
+
+.btn-share-instagram:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(253, 29, 29, 0.4);
+}
+
+.btn-share-instagram:active {
+  transform: scale(0.97);
+}
+
+.btn-share-instagram:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+.btn-share-instagram svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
