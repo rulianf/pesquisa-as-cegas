@@ -80,4 +80,4 @@ function voltarAoQuiz() {
 }
 
 // Inicializa quando a página carrega
-document.addEventListener('DOMContentLoaded', initResultPage);  
+document.addEventListener('DOMContentLoaded', initResultPage);

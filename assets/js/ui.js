@@ -218,7 +218,7 @@ function renderTop1Card(candidate) {
               ${candidate.party}
             </span>
           </div>
-          <div class="top1-avatar" style="background:${candidate.color}">
+          <div class="top1-avatar" style="background:${candidate.color}" data-candidate-id="${candidate.id}">
             ${
                 candidate.avatar.includes('/')
                 ? `<img src="${candidate.avatar}" alt="${candidate.displayName}">`
