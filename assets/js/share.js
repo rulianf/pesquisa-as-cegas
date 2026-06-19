@@ -159,7 +159,7 @@ async function generateShareBlob(presCandidate, govCandidate) {
   ctx.fillStyle = '#ffffff';
   ctx.font = '800 112px sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('💙 DEU MATCH!', W / 2, 430);
+  ctx.fillText('💚 DEU MATCH!', W / 2, 430);
 
   // Subtítulo
   ctx.fillStyle = 'rgba(255,255,255,0.55)';
@@ -179,8 +179,8 @@ async function generateShareBlob(presCandidate, govCandidate) {
   const CARD_X_L = (W - (CARD_W * 2 + CARD_GAP)) / 2;
   const CARD_X_R = CARD_X_L + CARD_W + CARD_GAP;
 
-  await drawMatchCard(ctx, presCandidate, 'PRESIDENTE', CARD_X_L, CARD_Y, CARD_W, CARD_H);
-  await drawMatchCard(ctx, govCandidate,  'GOV. ES',    CARD_X_R, CARD_Y, CARD_W, CARD_H);
+  await drawMatchCard(ctx, presCandidate, 'Pré-candidata a Presidencia', CARD_X_L, CARD_Y, CARD_W, CARD_H);
+  await drawMatchCard(ctx, govCandidate,  'Pré-candidata ao GOV. ES',    CARD_X_R, CARD_Y, CARD_W, CARD_H);
 
   /* ── 8. Texto abaixo dos cards ───────────── */
   const afterCards = CARD_Y + CARD_H + 52;
@@ -365,14 +365,14 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   ctx.restore();
 
   // Label "de alinhamento"
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.fillStyle = 'rgb(196, 196, 196)';
   ctx.font      = '400 22px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('de alinhamento', x + w / 2, pctY + 36);
 
   // Nome
   ctx.fillStyle = '#ffffff';
-  ctx.font      = '700 30px sans-serif';
+  ctx.font      = '700 40px sans-serif';
   ctx.textAlign = 'center';
   canvasWrapText(ctx, candidate.displayName || candidate.fullName || '', x + w / 2, pctY + 90, w - 40, 38);
 
