@@ -17,6 +17,24 @@ function getAvatarImgFromDOM(candidateId) {
  * Ponto de entrada — tenta Web Share API,
  * cai no download automático se não for suportado.
  */
+// Gera o texto da legenda
+function gerarLegenda() {
+  const igHandle = (c) => {
+    if (!c.instagram) return c.displayName;
+    const m = c.instagram.match(/instagram\.com\/([^/]+)/);
+    return m ? '@' + m[1] : c.displayName;
+  };
+  return (
+    `Será que o candidato que você apoia realmente pensa como você?\n\n` +
+    `Meu resultado na Pesquisa Cega foi:\n` +
+    `🇧🇷 ${igHandle(window._topPres)} — ${window._topPres.matchPercent}%\n` +
+    `🗺️ ${igHandle(window._topGov)} — ${window._topGov.matchPercent}%\n\n` +
+    `Sem nomes. Sem partidos. Sem precisar informar nenhum dado.\n` +
+    `Leva menos de 3 minutos.\n\n` +
+    `Faça a sua: https://www.pesquisacega.com.br`
+  );
+}
+
 async function compartilharResultado() {
   const btn = document.getElementById('share-main-btn');
   const originalHTML = btn.innerHTML;
@@ -26,55 +44,16 @@ async function compartilharResultado() {
 
   try {
     const blob = await generateShareBlob(window._topPres, window._topGov);
-
-    // Extrai @handle do Instagram de cada candidato
-    const igHandle = (c) => {
-      if (!c.instagram) return '';
-      const m = c.instagram.match(/instagram\.com\/([^/]+)/);
-      return m ? ' @' + m[1] : '';
-    };
-
-    const legenda =
-      `Será que o candidato que você apoia realmente pensa como você?\n\n` +
-      `Meu resultado na Pesquisa Cega foi:\n` +
-      `🇧🇷 ${igHandle(window._topPres)} — ${window._topPres.matchPercent}%\n` +
-      `🗺️ ${igHandle(window._topGov)} — ${window._topGov.matchPercent}%\n\n` +
-      `Sem nomes. Sem partidos. Sem precisar informar nenhum dado.\n` +
-      `Leva menos de 3 minutos.\n\n` +
-      `Faça a sua: https://www.pesquisacega.com.br`;
+    const legenda = gerarLegenda();
 
     const file = new File([blob], 'pesquisa-cega-resultado.png', { type: 'image/png' });
 
-    // Tenta Web Share API (mobile com suporte a arquivos)
-    if (
-      navigator.share &&
-      navigator.canShare &&
-      navigator.canShare({ files: [file] })
-    ) {
-      await navigator.share({ files: [file], text: legenda });
-      btn.innerHTML = originalHTML;
-      btn.disabled = false;
-    } else if (navigator.share) {
-      // Share sem arquivo (só texto + URL) — alguns browsers
-      await navigator.share({
-        title: 'Pesquisa Cega 2026',
-        text: legenda,
-        url: 'https://pesquisacega.com.br'
-      });
-      // Também baixa a imagem para o usuário poder postar
-      baixarBlob(blob);
-      btn.innerHTML = originalHTML;
-      btn.disabled = false;
-    } else {
-      // Fallback desktop: só download
-      baixarBlob(blob);
-      btn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-        <span>Imagem baixada! Abra o Instagram</span>`;
-      setTimeout(() => { btn.innerHTML = originalHTML; btn.disabled = false; }, 3500);
-    }
+    // Restaura botão
+    btn.innerHTML = originalHTML;
+    btn.disabled = false;
+
+    // Mostra modal com legenda para copiar + botão compartilhar
+    mostrarModalLegenda(blob, file, legenda);
   } catch (err) {
     if (err.name !== 'AbortError') {
       // Erro real — tenta pelo menos baixar
@@ -94,6 +73,181 @@ function baixarBlob(blob) {
   link.click();
   document.body.removeChild(link);
   setTimeout(() => URL.revokeObjectURL(url), 3000);
+}
+
+/**
+ * Mostra modal com legenda para copiar e botão para compartilhar
+ */
+function mostrarModalLegenda(blob, file, legenda) {
+  // Remove modal anterior se existir
+  const existing = document.getElementById('legenda-modal');
+  if (existing) existing.remove();
+
+  const podeCompartilharArquivo = navigator.share && navigator.canShare && navigator.canShare({ files: [file] });
+  const podeCompartilhar = !!navigator.share;
+
+  const modal = document.createElement('div');
+  modal.id = 'legenda-modal';
+  modal.style.cssText = `
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(11,30,61,0.85);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding: 0;
+  `;
+
+  modal.innerHTML = `
+    <div style="
+      background: #fff;
+      width: 100%; max-width: 540px;
+      border-radius: 28px 28px 0 0;
+      padding: 28px 24px 40px;
+      box-shadow: 0 -16px 60px rgba(11,30,61,0.3);
+      animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    ">
+      <style>@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }</style>
+
+      <!-- Handle -->
+      <div style="width:40px;height:4px;background:#e2e6ed;border-radius:2px;margin:0 auto 20px;"></div>
+
+      <!-- Título -->
+      <div style="font-family:var(--font-display,sans-serif);font-size:20px;font-weight:800;color:#0b1e3d;margin-bottom:6px;">
+        Copie a legenda antes de compartilhar
+      </div>
+      <div style="font-size:13px;color:#9aa3b0;margin-bottom:16px;">
+        O Instagram não aceita texto automático — copie agora e cole ao postar o Story.
+      </div>
+
+      <!-- Caixa da legenda -->
+      <div id="legenda-box" style="
+        background:#f2f4f7;
+        border-radius:14px;
+        padding:16px;
+        font-size:14px;
+        line-height:1.6;
+        color:#1a2133;
+        white-space:pre-wrap;
+        margin-bottom:16px;
+        cursor:pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.15s;
+      " onclick="copiarLegenda()">${legenda.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>
+
+      <!-- Botão copiar -->
+      <button onclick="copiarLegenda()" id="btn-copiar-legenda" style="
+        width:100%; padding:14px;
+        background:#0b1e3d; color:#fff;
+        border:none; border-radius:100px;
+        font-family:var(--font-display,sans-serif);
+        font-size:15px; font-weight:700;
+        cursor:pointer; margin-bottom:12px;
+        display:flex; align-items:center; justify-content:center; gap:8px;
+      ">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar legenda
+      </button>
+
+      <!-- Botão compartilhar imagem -->
+      <button onclick="doShare()" id="btn-do-share" style="
+        width:100%; padding:14px;
+        background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+        color:#fff; border:none; border-radius:100px;
+        font-family:var(--font-display,sans-serif);
+        font-size:15px; font-weight:700;
+        cursor:pointer; margin-bottom:12px;
+        display:flex; align-items:center; justify-content:center; gap:8px;
+        box-shadow: 0 6px 24px rgba(253,29,29,0.3);
+      ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Compartilhar imagem
+      </button>
+
+      <!-- Fechar -->
+      <button onclick="document.getElementById('legenda-modal').remove()" style="
+        width:100%; padding:12px;
+        background:transparent; color:#9aa3b0;
+        border:none; font-size:14px; cursor:pointer;
+      ">Fechar</button>
+    </div>
+  `;
+
+  // Guarda blob e file no modal para o doShare acessar
+  modal._blob = blob;
+  modal._file = file;
+  modal._legenda = legenda;
+  modal._podeArquivo = podeCompartilharArquivo;
+  modal._podeShare = podeCompartilhar;
+
+  document.body.appendChild(modal);
+
+  // Fecha ao clicar no overlay
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.remove();
+  });
+}
+
+/**
+ * Copia a legenda para o clipboard
+ */
+async function copiarLegenda() {
+  const modal = document.getElementById('legenda-modal');
+  if (!modal) return;
+  const legenda = modal._legenda;
+
+  try {
+    await navigator.clipboard.writeText(legenda);
+    const btn = document.getElementById('btn-copiar-legenda');
+    const box = document.getElementById('legenda-box');
+    btn.innerHTML = `
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Legenda copiada!`;
+    btn.style.background = '#0e8a6e';
+    box.style.borderColor = '#0e8a6e';
+    setTimeout(() => {
+      btn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar legenda`;
+      btn.style.background = '#0b1e3d';
+      box.style.borderColor = 'transparent';
+    }, 2500);
+  } catch (e) {
+    // Fallback: seleciona o texto
+    const range = document.createRange();
+    range.selectNodeContents(document.getElementById('legenda-box'));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  }
+}
+
+/**
+ * Dispara o compartilhamento da imagem
+ */
+async function doShare() {
+  const modal = document.getElementById('legenda-modal');
+  if (!modal) return;
+
+  const { _blob, _file, _legenda, _podeArquivo, _podeShare } = modal;
+  const btn = document.getElementById('btn-do-share');
+  btn.innerHTML = `<span>Abrindo…</span>`;
+  btn.disabled = true;
+
+  try {
+    if (_podeArquivo) {
+      await navigator.share({ files: [_file] });
+    } else if (_podeShare) {
+      await navigator.share({ title: 'Pesquisa Cega 2026', url: 'https://pesquisacega.com.br' });
+      baixarBlob(_blob);
+    } else {
+      baixarBlob(_blob);
+    }
+    modal.remove();
+  } catch (e) {
+    if (e.name !== 'AbortError') console.warn('Share error:', e);
+    btn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Compartilhar imagem`;
+    btn.disabled = false;
+  }
 }
 
 /* ════════════════════════════════════════════
@@ -159,7 +313,7 @@ async function generateShareBlob(presCandidate, govCandidate) {
   ctx.fillStyle = '#ffffff';
   ctx.font = '800 112px sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('💚 DEU MATCH!', W / 2, 430);
+  ctx.fillText('💙 DEU MATCH!', W / 2, 430);
 
   // Subtítulo
   ctx.fillStyle = 'rgba(255,255,255,0.55)';
@@ -179,8 +333,8 @@ async function generateShareBlob(presCandidate, govCandidate) {
   const CARD_X_L = (W - (CARD_W * 2 + CARD_GAP)) / 2;
   const CARD_X_R = CARD_X_L + CARD_W + CARD_GAP;
 
-  await drawMatchCard(ctx, presCandidate, 'Pré-candidato a Presidencia', CARD_X_L, CARD_Y, CARD_W, CARD_H);
-  await drawMatchCard(ctx, govCandidate,  'Pré-candidato ao GOV. ES',    CARD_X_R, CARD_Y, CARD_W, CARD_H);
+  await drawMatchCard(ctx, presCandidate, 'PRESIDENTE', CARD_X_L, CARD_Y, CARD_W, CARD_H);
+  await drawMatchCard(ctx, govCandidate,  'GOV. ES',    CARD_X_R, CARD_Y, CARD_W, CARD_H);
 
   /* ── 8. Texto abaixo dos cards ───────────── */
   const afterCards = CARD_Y + CARD_H + 52;
@@ -365,14 +519,14 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   ctx.restore();
 
   // Label "de alinhamento"
-  ctx.fillStyle = 'rgb(196, 196, 196)';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
   ctx.font      = '400 22px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('de alinhamento', x + w / 2, pctY + 36);
 
   // Nome
   ctx.fillStyle = '#ffffff';
-  ctx.font      = '700 40px sans-serif';
+  ctx.font      = '700 30px sans-serif';
   ctx.textAlign = 'center';
   canvasWrapText(ctx, candidate.displayName || candidate.fullName || '', x + w / 2, pctY + 90, w - 40, 38);
 
@@ -390,7 +544,7 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   ctx.stroke();
   ctx.restore();
   ctx.fillStyle = '#ffffff';
-  ctx.font      = '700 30px sans-serif';
+  ctx.font      = '700 21px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText(candidate.party, x + w / 2, badgeY + 26);
 }
