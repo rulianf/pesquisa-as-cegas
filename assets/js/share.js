@@ -179,8 +179,8 @@ async function generateShareBlob(presCandidate, govCandidate) {
   const CARD_X_L = (W - (CARD_W * 2 + CARD_GAP)) / 2;
   const CARD_X_R = CARD_X_L + CARD_W + CARD_GAP;
 
-  await drawMatchCard(ctx, presCandidate, 'Pré-candidata a Presidencia', CARD_X_L, CARD_Y, CARD_W, CARD_H);
-  await drawMatchCard(ctx, govCandidate,  'Pré-candidata ao GOV. ES',    CARD_X_R, CARD_Y, CARD_W, CARD_H);
+  await drawMatchCard(ctx, presCandidate, 'Pré-candidato a Presidencia', CARD_X_L, CARD_Y, CARD_W, CARD_H);
+  await drawMatchCard(ctx, govCandidate,  'Pré-candidato ao GOV. ES',    CARD_X_R, CARD_Y, CARD_W, CARD_H);
 
   /* ── 8. Texto abaixo dos cards ───────────── */
   const afterCards = CARD_Y + CARD_H + 52;
@@ -304,9 +304,9 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   ctx.letterSpacing = '0px';
 
   // Avatar circular
-  const avatarR  = 72;
+  const avatarR  = 96;
   const avatarCX = x + w / 2;
-  const avatarCY = y + 54 + avatarR + 18;
+  const avatarCY = y + 54 + avatarR + 48;
 
   // Anel exterior animado (glow)
   ctx.save();
@@ -390,7 +390,7 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   ctx.stroke();
   ctx.restore();
   ctx.fillStyle = '#ffffff';
-  ctx.font      = '700 21px sans-serif';
+  ctx.font      = '700 30px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText(candidate.party, x + w / 2, badgeY + 26);
 }
