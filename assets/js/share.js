@@ -27,12 +27,21 @@ async function compartilharResultado() {
   try {
     const blob = await generateShareBlob(window._topPres, window._topGov);
 
+    // Extrai @handle do Instagram de cada candidato
+    const igHandle = (c) => {
+      if (!c.instagram) return '';
+      const m = c.instagram.match(/instagram\.com\/([^/]+)/);
+      return m ? ' @' + m[1] : '';
+    };
+
     const legenda =
-      `💙 Fiz a Pesquisa Cega e dei match com os candidatos!\n\n` +
-      `🏛️ Presidente: ${window._topPres.displayName} — ${window._topPres.matchPercent}% de alinhamento\n` +
-      `🗺️ Gov. ES: ${window._topGov.displayName} — ${window._topGov.matchPercent}% de alinhamento\n\n` +
-      `Sem ver nomes. Sem ver partidos. Só as ideias.\n\n` +
-      `👉 Faça o seu: pesquisacega.com.br`;
+      `Será que o candidato que você apoia realmente pensa como você?\n\n` +
+      `Meu resultado na Pesquisa Cega foi:\n` +
+      `🇧🇷 ${igHandle(window._topPres)} — ${window._topPres.matchPercent}%\n` +
+      `🗺️ ${igHandle(window._topGov)} — ${window._topGov.matchPercent}%\n\n` +
+      `Sem nomes. Sem partidos. Sem precisar informar nenhum dado.\n` +
+      `Leva menos de 3 minutos.\n\n` +
+      `Faça a sua: https://www.pesquisacega.com.br`;
 
     const file = new File([blob], 'pesquisa-cega-resultado.png', { type: 'image/png' });
 
@@ -343,13 +352,13 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   }
 
   /* ── Percentual — elemento mais chamativo ── */
-  const pctY = avatarCY + avatarR + 76;
+  const pctY = avatarCY + avatarR + 110;
 
   // Glow atrás do número
   ctx.save();
-  ctx.shadowColor = candidate.color || '#5ce8c5';
+  ctx.shadowColor = '#5ce8c5';
   ctx.shadowBlur  = 40;
-  ctx.fillStyle   = candidate.color || '#5ce8c5';
+  ctx.fillStyle   = '#5ce8c5';
   ctx.font        = '800 108px sans-serif';
   ctx.textAlign   = 'center';
   ctx.fillText(`${candidate.matchPercent}%`, x + w / 2, pctY);
@@ -380,7 +389,7 @@ async function drawMatchCard(ctx, candidate, label, x, y, w, h) {
   ctx.lineWidth = 1.5;
   ctx.stroke();
   ctx.restore();
-  ctx.fillStyle = candidate.color || '#5ce8c5';
+  ctx.fillStyle = '#ffffff';
   ctx.font      = '700 21px sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText(candidate.party, x + w / 2, badgeY + 26);
