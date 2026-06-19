@@ -21,12 +21,15 @@ function getAvatarImgFromDOM(candidateId) {
 function gerarLegenda() {
   const igHandle = (c) => {
     if (!c.instagram) return c.displayName;
-    const m = c.instagram.match(/instagram\.com\/([^/]+)/);
-    return m ? '@' + m[1] : c.displayName;
+    // Remove trailing slash, pega o último segmento da URL
+    const url = c.instagram.replace(/\/$/, '');
+    const parts = url.split('/');
+    const handle = parts[parts.length - 1];
+    return handle ? '@' + handle : c.displayName;
   };
   return (
     `Será que o candidato que você apoia realmente pensa como você?\n\n` +
-    `Meu resultado na Pesquisa Cega foi:\n` +
+    `Meu resultado na Pesquisa às Cegas foi:\n` +
     `🇧🇷 ${igHandle(window._topPres)} — ${window._topPres.matchPercent}%\n` +
     `🗺️ ${igHandle(window._topGov)} — ${window._topGov.matchPercent}%\n\n` +
     `Sem nomes. Sem partidos. Sem precisar informar nenhum dado.\n` +
@@ -235,7 +238,7 @@ async function doShare() {
     if (_podeArquivo) {
       await navigator.share({ files: [_file] });
     } else if (_podeShare) {
-      await navigator.share({ title: 'Pesquisa Cega 2026', url: 'https://pesquisacega.com.br' });
+      await navigator.share({ title: 'Pesquisa às Cegas', url: 'https://pesquisacega.com.br' });
       baixarBlob(_blob);
     } else {
       baixarBlob(_blob);
@@ -295,12 +298,12 @@ async function generateShareBlob(presCandidate, govCandidate) {
   drawHLine(ctx, W, 310, 'rgba(92,232,197,0.4)', 1.5);
 
   /* ── 5. Topo: marca + slogan ─────────────── */
-  // "PESQUISA CEGA 2026"
+  // "PESQUISA ÀS CEGAS"
   ctx.fillStyle = '#ffffff';
   ctx.font = '800 52px sans-serif';
   ctx.textAlign = 'center';
   ctx.letterSpacing = '4px';
-  ctx.fillText('PESQUISA CEGA 2026', W / 2, 190);
+  ctx.fillText('PESQUISA ÀS CEGAS', W / 2, 190);
   ctx.letterSpacing = '0px';
 
   // Slogan
@@ -313,7 +316,7 @@ async function generateShareBlob(presCandidate, govCandidate) {
   ctx.fillStyle = '#ffffff';
   ctx.font = '800 112px sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('💙 DEU MATCH!', W / 2, 430);
+  ctx.fillText('💚 DEU MATCH!', W / 2, 430);
 
   // Subtítulo
   ctx.fillStyle = 'rgba(255,255,255,0.55)';
