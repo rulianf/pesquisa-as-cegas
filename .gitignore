@@ -1,0 +1,44 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors and IDEs
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Build and coverage output
+dist/
+build/
+out/
+coverage/
+.cache/
+.parcel-cache/
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Runtime and debug files
+*.pid
+*.seed
+*.pid.lock
+
+# Test artifacts
+.nyc_output/
+playwright-report/
+test-results/
