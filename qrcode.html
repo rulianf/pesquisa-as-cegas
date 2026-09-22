@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Missão 14 — Espírito Santo</title>
+    <meta name="description" content="Conheça os candidatos do Missão no Espírito Santo, entre na comunidade do WhatsApp e converse com a Renanpedia.">
+    <style>
+      :root {
+        --bg: #0e141b;
+        --bg-elevated: #161f29;
+        --bg-elevated-2: #1c2733;
+        --text: #f5f3ee;
+        --text-muted: #a9b4be;
+        --accent: #c9a227;
+        --accent-strong: #e3c158;
+        --border: rgba(245, 243, 238, 0.12);
+        --whatsapp: #25d366;
+        --whatsapp-dark: #1da851;
+        --radius-card: 4px;
+        --max-w: 480px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 17px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ===== HERO / TOPO ===== */
+
+      .hero {
+        padding: 36px 0 32px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero-mark {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+
+      .hero-mark .party-name {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: var(--text-muted);
+      }
+
+      .ballot-number-hero {
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 1;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.02em;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1.28;
+        letter-spacing: -0.01em;
+        margin: 0 0 24px;
+        max-width: 22ch;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 52px;
+        padding: 12px 20px;
+        border-radius: var(--radius-card);
+        font-size: 17px;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease,
+          transform 0.1s ease;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .btn-primary {
+        background: var(--whatsapp);
+        color: #0a1f13;
+      }
+      .btn-primary:hover {
+        background: var(--whatsapp-dark);
+        color: #fff;
+      }
+      .btn-primary:focus-visible {
+        outline: 3px solid var(--accent-strong);
+        outline-offset: 2px;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border-color: var(--border);
+        color: var(--text);
+      }
+      .btn-secondary:hover {
+        border-color: var(--text);
+      }
+      .btn-secondary:focus-visible {
+        outline: 3px solid var(--accent-strong);
+        outline-offset: 2px;
+      }
+
+      .btn-icon {
+        width: 20px;
+        height: 20px;
+        flex: none;
+      }
+
+      /* ===== SECTIONS ===== */
+
+      section {
+        padding: 40px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section-title {
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        margin: 0 0 4px;
+      }
+
+      .section-sub {
+        color: var(--text-muted);
+        font-size: 15px;
+        margin: 0 0 24px;
+      }
+
+      .group-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-muted);
+        margin: 28px 0 12px;
+        padding-top: 4px;
+      }
+
+      .group-title:first-of-type {
+        margin-top: 0;
+      }
+
+      /* ===== CANDIDATE CARDS ===== */
+
+      .candidate-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .candidate-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .candidate-photo-wrap {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        background: var(--bg-elevated-2);
+      }
+
+      .candidate-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .photo-fallback {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--text-muted);
+        background: var(--bg-elevated-2);
+      }
+
+      .ballot-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: var(--bg);
+        border: 1.5px solid var(--accent);
+        color: var(--accent-strong);
+        font-weight: 800;
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.01em;
+        padding: 3px 7px;
+        border-radius: 3px;
+        line-height: 1.2;
+      }
+
+      .candidate-info {
+        padding: 10px 10px 12px;
+      }
+
+      .candidate-name {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 0 0 2px;
+      }
+
+      .candidate-role {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 0 0 6px;
+      }
+
+      .candidate-ig {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent-strong);
+        text-decoration: none;
+      }
+      .candidate-ig:hover {
+        text-decoration: underline;
+      }
+      .candidate-ig:focus-visible {
+        outline: 2px solid var(--accent-strong);
+        outline-offset: 2px;
+      }
+
+      /* ===== RENANPEDIA ===== */
+
+      .renanpedia {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: 22px;
+      }
+
+      .renanpedia h2 {
+        font-size: 19px;
+        font-weight: 800;
+        margin: 0 0 8px;
+        line-height: 1.3;
+      }
+
+      .renanpedia p {
+        font-size: 15px;
+        color: var(--text-muted);
+        margin: 0 0 18px;
+      }
+
+      .renanpedia .btn {
+        background: var(--accent);
+        color: #1a1404;
+        width: 100%;
+      }
+      .renanpedia .btn:hover {
+        background: var(--accent-strong);
+      }
+      .renanpedia .btn:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 2px;
+      }
+
+      /* ===== FOOTER ===== */
+
+      footer {
+        padding: 28px 0 100px;
+        text-align: center;
+      }
+
+      footer .foot-name {
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: 0.01em;
+      }
+
+      footer .foot-number {
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      /* ===== FLOATING WHATSAPP CTA ===== */
+
+      .float-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+        background: linear-gradient(to top, var(--bg) 60%, transparent);
+        transform: translateY(120%);
+        opacity: 0;
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
+        pointer-events: none;
+      }
+
+      .float-cta.visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .float-cta .btn {
+        max-width: calc(var(--max-w) - 40px);
+        margin: 0 auto;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .float-cta {
+          transition: none;
+        }
+        .btn {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="hero" id="topo">
+      <div class="wrap">
+        <div class="hero-mark">
+          <span class="party-name">
+            <img alt="Logo Missão" src="./assets/svg/missao.svg" width="160">
+          </span>
+          <span class="ballot-number-hero">14</span>
+        </div>
+        <h1>Política feita por quem entende do assunto.</h1>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/KXWWmN9XIppCkysAzxbri9" target="_blank" rel="noopener">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39c1.44.79 3.06 1.2 4.72 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.94 6.45 17.5 2 12.04 2zm5.8 14.09c-.25.7-1.24 1.29-2.03 1.46-.54.12-1.25.21-3.63-.78-3.05-1.26-5.01-4.36-5.16-4.56-.15-.2-1.23-1.64-1.23-3.13s.77-2.22 1.05-2.53c.27-.3.6-.38.8-.38.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.09.92 2.24.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.17-.2.73-.85.93-1.15.2-.3.4-.24.66-.14.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.72-.18 1.42z"/></svg>
+            Entrar na comunidade no WhatsApp
+          </a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/partidomissao/" target="_blank" rel="noopener">
+            Seguir @partidomissao no Instagram
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <section aria-labelledby="candidatos-title">
+        <div class="wrap">
+          <h2 class="section-title" id="candidatos-title">Nossos candidatos no Espírito Santo</h2>
+          <p class="section-sub">Toque no número para lembrar na hora de votar.</p>
+
+          <h3 class="group-title">Deputado estadual</h3>
+          <div class="candidate-grid">
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">14000</span>
+                <img
+                  src="./assets/img/candidates/karyna.jpg"
+                  alt="Foto de Enfermeira Karyna Dara"
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">KD</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Enfermeira Karyna Dara</p>
+                <p class="candidate-role">Deputada estadual</p>
+                <a class="candidate-ig" href="https://www.instagram.com/enfermeirakarynadara/" target="_blank" rel="noopener">@enfermeirakarynadara</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">14014</span>
+                <img
+                  src="./assets/img/candidates/angelo.jpg"
+                  alt="Foto de Ventorim"
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">V</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Ventorim</p>
+                <p class="candidate-role">Deputado estadual</p>
+                <a class="candidate-ig" href="https://www.instagram.com/ventorim.es/" target="_blank" rel="noopener">@ventorim.es</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">14321</span>
+                <img
+                  src="./assets/img/candidates/danley.jpg"
+                  alt="Foto de Danley Vieira"
+                  loading="eager"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">DV</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Danley Vieira</p>
+                <p class="candidate-role">Deputado estadual</p>
+                <a class="candidate-ig" href="https://www.instagram.com/danleyvieira14/" target="_blank" rel="noopener">@danleyvieira14</a>
+              </div>
+            </article>
+
+          </div>
+
+          <h3 class="group-title">Deputado federal</h3>
+          <div class="candidate-grid">
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1400</span>
+                <img
+                  src="./assets/img/candidates/pedrofrancez.jpg"
+                  alt="Foto de Pedro Francez"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">PF</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Pedro Francez</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/pedrofrancez/" target="_blank" rel="noopener">@pedrofrancez</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1401</span>
+                <img
+                  src="./assets/img/candidates/samira.jpg"
+                  alt="Foto de Samira Oliveira"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">SO</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Samira Oliveira</p>
+                <p class="candidate-role">Deputada federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/macchi_atos/" target="_blank" rel="noopener">@macchi_atos</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1411</span>
+                <img
+                  src="./assets/img/candidates/oliveira.jpeg"
+                  alt="Foto de Bombeiro Oliveira"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">BO</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Bombeiro Oliveira</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/sgt_bm_oliveira/" target="_blank" rel="noopener">@sgt_bm_oliveira</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1414</span>
+                <img
+                  src="./assets/img/candidates/perestelo.jpg"
+                  alt="Foto de Cabo Rogério Perestelo"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">RP</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Cabo Rogério Perestelo</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/rogerioperestelo/" target="_blank" rel="noopener">@rogerioperestelo</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1427</span>
+                <img
+                  src="./assets/img/candidates/mauro.jpeg"
+                  alt="Foto de Mauro Júnior"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">MJ</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Mauro Júnior</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/maurojr.es/" target="_blank" rel="noopener">@maurojr.es</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1441</span>
+                <img
+                  src="./assets/img/candidates/jefferson.jpeg"
+                  alt="Foto de Jefferson Zanetti"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">JZ</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Jefferson Zanetti</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/ateocegove.missao14/" target="_blank" rel="noopener">@ateocegove.missao14</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1444</span>
+                <img
+                  src="./assets/img/candidates/juliana.jpg"
+                  alt="Foto de Juliana Redivo"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">JR</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Juliana Redivo</p>
+                <p class="candidate-role">Deputada federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/julianabredivo/" target="_blank" rel="noopener">@julianabredivo</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1450</span>
+                <img
+                  src="./assets/img/candidates/lucas.jpg"
+                  alt="Foto de Lucas Ganso"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">LG</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Lucas Ganso</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/lucasgansomissao/" target="_blank" rel="noopener">@lucasgansomissao</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1456</span>
+                <img
+                  src="./assets/img/candidates/kelly.jpg"
+                  alt="Foto de Kelly Carvalho"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">KC</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Kelly Carvalho</p>
+                <p class="candidate-role">Deputada federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/kellycarvalho.fc/" target="_blank" rel="noopener">@kellycarvalho.fc</a>
+              </div>
+            </article>
+
+            <article class="candidate-card">
+              <div class="candidate-photo-wrap">
+                <span class="ballot-badge">1487</span>
+                <img
+                  src="./assets/img/candidates/diego.jpeg"
+                  alt="Foto de Diego Dantas"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <span class="photo-fallback" style="display:none;">DD</span>
+              </div>
+              <div class="candidate-info">
+                <p class="candidate-name">Diego Dantas</p>
+                <p class="candidate-role">Deputado federal</p>
+                <a class="candidate-ig" href="https://www.instagram.com/diegodantasmd/" target="_blank" rel="noopener">@diegodantasmd</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="renanpedia-title">
+        <div class="wrap">
+          <div class="renanpedia">
+            <h2 id="renanpedia-title">Ficou com alguma dúvida sobre as nossas propostas?</h2>
+            <p>A Renanpedia é a nossa inteligência artificial, treinada nos livros do Missão. Pergunte sobre saúde, educação, segurança ou economia.</p>
+            <a class="btn" href="https://www.renanpedia.com/" target="_blank" rel="noopener">Conversar com a Renanpedia</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span class="foot-name">Missão</span> <span class="foot-number">14</span>
+      </div>
+    </footer>
+
+    <div class="float-cta" id="floatCta">
+      <a class="btn btn-primary" href="https://chat.whatsapp.com/KXWWmN9XIppCkysAzxbri9" target="_blank" rel="noopener">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39c1.44.79 3.06 1.2 4.72 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.94 6.45 17.5 2 12.04 2zm5.8 14.09c-.25.7-1.24 1.29-2.03 1.46-.54.12-1.25.21-3.63-.78-3.05-1.26-5.01-4.36-5.16-4.56-.15-.2-1.23-1.64-1.23-3.13s.77-2.22 1.05-2.53c.27-.3.6-.38.8-.38.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.85 2.09.92 2.24.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.17-.2.73-.85.93-1.15.2-.3.4-.24.66-.14.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.72-.18 1.42z"/></svg>
+        Entrar no WhatsApp
+      </a>
+    </div>
+
+    <script>
+      (function () {
+        var hero = document.getElementById("topo");
+        var floatCta = document.getElementById("floatCta");
+        if (!hero || !floatCta || !("IntersectionObserver" in window)) return;
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                floatCta.classList.remove("visible");
+              } else {
+                floatCta.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0 },
+        );
+
+        observer.observe(hero);
+      })();
+    </script>
+
+  </body>
+</html>
